@@ -1,0 +1,28 @@
+[gd_scene format=3 uid="uid://c7qe4kn8mug1x"]
+
+[ext_resource type="Script" uid="uid://cchg7syap3rvm" path="res://contexts/title_context.gd" id="1_ch40n"]
+
+[node name="TitleScreen" type="Node2D" unique_id=1931072344]
+script = ExtResource("1_ch40n")
+
+[node name="Title" type="Label" parent="." unique_id=1646499434]
+offset_left = 224.0
+offset_top = 114.0
+offset_right = 641.0
+offset_bottom = 202.0
+theme_override_font_sizes/font_size = 64
+text = "TITLE SCREEN"
+
+[node name="StartGame" type="Button" parent="." unique_id=350417646]
+offset_left = 220.0
+offset_top = 273.0
+offset_right = 313.0
+offset_bottom = 304.0
+text = "Start game"
+
+[node name="Quit" type="Button" parent="." unique_id=1331043324]
+offset_left = 222.0
+offset_top = 318.0
+offset_right = 264.0
+offset_bottom = 349.0
+text = "Quit"

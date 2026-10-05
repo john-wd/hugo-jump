@@ -1,0 +1,10 @@
+[gd_scene format=3 uid="uid://cvn7h37ruikkb"]
+
+[ext_resource type="Script" uid="uid://bori5hbafritw" path="res://contexts/root_context.gd" id="1_3etme"]
+[ext_resource type="PackedScene" uid="uid://c7qe4kn8mug1x" path="res://contexts/title_context.tscn" id="3_4h17n"]
+[ext_resource type="PackedScene" uid="uid://rxx4jfd3c6ay" path="res://contexts/game_context.tscn" id="4_2mfb3"]
+
+[node name="RootContext" type="Node2D" unique_id=2106507547]
+script = ExtResource("1_3etme")
+title_context = ExtResource("3_4h17n")
+game_context = ExtResource("4_2mfb3")

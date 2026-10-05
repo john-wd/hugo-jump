@@ -1,0 +1,6 @@
+[gd_scene format=3 uid="uid://df8j4tlso6ixu"]
+
+[ext_resource type="Script" uid="uid://cgcgvx5csssf8" path="res://managers/platform_manager.gd" id="1_chbik"]
+
+[node name="PlatformManager" type="Node2D" unique_id=331613212]
+script = ExtResource("1_chbik")

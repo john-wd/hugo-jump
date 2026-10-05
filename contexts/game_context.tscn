@@ -1,0 +1,23 @@
+[gd_scene format=3 uid="uid://rxx4jfd3c6ay"]
+
+[ext_resource type="PackedScene" uid="uid://cvla0rerpw5jo" path="res://entities/Player/player.tscn" id="1_hat22"]
+[ext_resource type="Script" uid="uid://8fdycvdgoi4e" path="res://contexts/game_context.gd" id="1_t4bxf"]
+[ext_resource type="PackedScene" uid="uid://df8j4tlso6ixu" path="res://managers/platform_manager.tscn" id="2_xej52"]
+[ext_resource type="PackedScene" uid="uid://bu4bpfcdmdjwv" path="res://entities/Platform/platform.tscn" id="4_x628s"]
+
+[node name="MainGame" type="Node2D" unique_id=798394487]
+script = ExtResource("1_t4bxf")
+
+[node name="PlatformManager" parent="." unique_id=331613212 node_paths=PackedStringArray("container") instance=ExtResource("2_xej52")]
+platform_scene = ExtResource("4_x628s")
+container = NodePath("../World/Platforms")
+
+[node name="World" type="Node2D" parent="." unique_id=26740861]
+
+[node name="Player" parent="World" unique_id=1677244509 instance=ExtResource("1_hat22")]
+position = Vector2(422, 903)
+
+[node name="Platforms" type="Node2D" parent="World" unique_id=1052235195]
+
+[node name="Platform" parent="World/Platforms" unique_id=999820652 instance=ExtResource("4_x628s")]
+position = Vector2(194, 978)
