@@ -2,7 +2,10 @@
 
 [ext_resource type="Script" uid="uid://cchg7syap3rvm" path="res://contexts/title_context.gd" id="1_ch40n"]
 
+[sub_resource type="FontVariation" id="FontVariation_m8nip"]
+
 [sub_resource type="FontVariation" id="FontVariation_awjf8"]
+base_font = SubResource("FontVariation_m8nip")
 
 [sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_aimh4"]
 
@@ -16,8 +19,23 @@
 
 [sub_resource type="Theme" id="Theme_ermvq"]
 Button/colors/font_color = Color(0.5763833, 0.57638216, 0.5763825, 1)
+Button/colors/font_disabled_color = Color(0.875, 0.875, 0.875, 0.5)
+Button/colors/font_focus_color = Color(0.95, 0.95, 0.95, 1)
+Button/colors/font_hover_color = Color(0.95, 0.95, 0.95, 1)
+Button/colors/font_hover_pressed_color = Color(1, 1, 1, 1)
+Button/colors/font_outline_color = Color(0, 0, 0, 1)
 Button/colors/font_pressed_color = Color(0.7882353, 0.5568628, 0.9372549, 1)
+Button/colors/icon_disabled_color = Color(1, 1, 1, 0.4)
+Button/colors/icon_focus_color = Color(1, 1, 1, 1)
+Button/colors/icon_hover_color = Color(1, 1, 1, 1)
+Button/colors/icon_hover_pressed_color = Color(1, 1, 1, 1)
+Button/colors/icon_normal_color = Color(1, 1, 1, 1)
 Button/colors/icon_pressed_color = Color(0.7882353, 0.5568628, 0.9372549, 1)
+Button/constants/align_to_largest_stylebox = 0
+Button/constants/h_separation = 4
+Button/constants/icon_max_width = 0
+Button/constants/outline_size = 0
+Button/font_sizes/font_size = 24
 Button/fonts/font = SubResource("FontVariation_awjf8")
 Button/styles/disabled = SubResource("StyleBoxEmpty_aimh4")
 Button/styles/focus = SubResource("StyleBoxEmpty_5w4b0")

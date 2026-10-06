@@ -4,6 +4,15 @@ class_name Player extends CharacterBody2D
 @export var JUMP_VELOCITY := -1400.0
 
 @onready var collision: CollisionShape2D = $CollisionShape2D
+@onready var anim_player: AnimationPlayer = $AnimationPlayer
+@onready var sprite: Sprite2D = $Sprite2D
+
+enum State {
+    RUNNING,
+    JUMPING,
+    IDLE
+}
+var state: State = State.IDLE
 
 signal died
 
@@ -12,6 +21,7 @@ var jumps := 0
 var paused := false
 
 func jump() -> void:
+    state = State.JUMPING
     if jumps < 2:
         velocity.y = JUMP_VELOCITY
         jumps += 1
@@ -36,6 +46,7 @@ func unpause() -> void:
 func _physics_process(delta: float) -> void:
     if is_on_floor():
         jumps = 0
+        state = State.IDLE
     else:
         if jumps == 0:
             jumps = 1
@@ -47,6 +58,9 @@ func _physics_process(delta: float) -> void:
     var direction := Input.get_axis("move_left", "move_right")
     if direction:
         velocity.x = direction * SPEED
+        sprite.flip_h = direction < 0
+        if state != State.JUMPING:
+            state = State.RUNNING
         unpause()
     else:
         # gracefully stop speed instead of immediate
@@ -54,10 +68,19 @@ func _physics_process(delta: float) -> void:
         
     if not paused and not is_on_floor():
         velocity.y += gravity * delta
-        
+    
+    animate()
     move_and_slide()
     wrap_h()
     check_died()
+    
+func animate() -> void:
+    if state == State.IDLE:
+        anim_player.play("idle")
+    elif state == State.RUNNING:
+        anim_player.play("run")
+    elif state == State.JUMPING:
+        anim_player.play("jump")
     
 func check_died() -> void:
     var viewport_height := get_viewport_rect().size.y
