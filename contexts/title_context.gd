@@ -1,7 +1,8 @@
 class_name TitleContext extends Node2D
 
-@onready var gameBtn: Button = $StartGame
-@onready var quitBtn: Button = $Quit
+@onready var gameBtn: Button = %start_button
+@onready var quitBtn: Button = %quit_button
+@onready var settingsBtn: Button = %settings_button
 
 signal start_button_pressed
 signal quit_button_pressed

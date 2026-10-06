@@ -2,27 +2,74 @@
 
 [ext_resource type="Script" uid="uid://cchg7syap3rvm" path="res://contexts/title_context.gd" id="1_ch40n"]
 
+[sub_resource type="FontVariation" id="FontVariation_awjf8"]
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_aimh4"]
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_5w4b0"]
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_agxdp"]
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_li6t7"]
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_m8nip"]
+
+[sub_resource type="Theme" id="Theme_ermvq"]
+Button/colors/font_color = Color(0.5763833, 0.57638216, 0.5763825, 1)
+Button/colors/font_pressed_color = Color(0.7882353, 0.5568628, 0.9372549, 1)
+Button/colors/icon_pressed_color = Color(0.7882353, 0.5568628, 0.9372549, 1)
+Button/fonts/font = SubResource("FontVariation_awjf8")
+Button/styles/disabled = SubResource("StyleBoxEmpty_aimh4")
+Button/styles/focus = SubResource("StyleBoxEmpty_5w4b0")
+Button/styles/hover = SubResource("StyleBoxEmpty_agxdp")
+Button/styles/normal = SubResource("StyleBoxEmpty_li6t7")
+Button/styles/pressed = SubResource("StyleBoxEmpty_m8nip")
+
 [node name="TitleScreen" type="Node2D" unique_id=1931072344]
 script = ExtResource("1_ch40n")
 
-[node name="Title" type="Label" parent="." unique_id=1646499434]
-offset_left = 224.0
-offset_top = 114.0
-offset_right = 641.0
-offset_bottom = 202.0
+[node name="margin_container" type="MarginContainer" parent="." unique_id=301034111]
+offset_right = 960.0
+offset_bottom = 1280.0
+size_flags_vertical = 3
+theme = SubResource("Theme_ermvq")
+theme_override_constants/margin_left = 32
+theme_override_constants/margin_top = 32
+theme_override_constants/margin_right = 32
+theme_override_constants/margin_bottom = 320
+
+[node name="v_box_container" type="VBoxContainer" parent="margin_container" unique_id=1155953567]
+layout_mode = 2
+size_flags_horizontal = 4
+size_flags_vertical = 8
+size_flags_stretch_ratio = 0.71
+theme_override_constants/separation = 32
+
+[node name="Title" type="Label" parent="margin_container/v_box_container" unique_id=1646499434]
+layout_mode = 2
 theme_override_font_sizes/font_size = 64
 text = "TITLE SCREEN"
 
-[node name="StartGame" type="Button" parent="." unique_id=350417646]
-offset_left = 220.0
-offset_top = 273.0
-offset_right = 313.0
-offset_bottom = 304.0
+[node name="margin_container" type="MarginContainer" parent="margin_container/v_box_container" unique_id=1681319505]
+layout_mode = 2
+theme_override_constants/margin_left = 100
+theme_override_constants/margin_right = 100
+
+[node name="v_box_container2" type="VBoxContainer" parent="margin_container/v_box_container/margin_container" unique_id=1250725150]
+layout_mode = 2
+
+[node name="start_button" type="Button" parent="margin_container/v_box_container/margin_container/v_box_container2" unique_id=350417646]
+unique_name_in_owner = true
+layout_mode = 2
 text = "Start game"
 
-[node name="Quit" type="Button" parent="." unique_id=1331043324]
-offset_left = 222.0
-offset_top = 318.0
-offset_right = 264.0
-offset_bottom = 349.0
+[node name="settings_button" type="Button" parent="margin_container/v_box_container/margin_container/v_box_container2" unique_id=1742680031]
+unique_name_in_owner = true
+layout_mode = 2
+text = "Settings
+"
+
+[node name="quit_button" type="Button" parent="margin_container/v_box_container/margin_container/v_box_container2" unique_id=1331043324]
+unique_name_in_owner = true
+layout_mode = 2
 text = "Quit"
