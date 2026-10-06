@@ -9,4 +9,5 @@ signal quit_button_pressed
 func setup():
     gameBtn.pressed.connect(start_button_pressed.emit)
     quitBtn.pressed.connect(quit_button_pressed.emit)
+    gameBtn.grab_focus()
         

@@ -6,15 +6,17 @@ class_name GameContext extends Node2D
 @onready var world: Node2D = $World
 
 @export var DEFAULT_SCROLLING_SPEED := 200
-@export var DEFAULT_TICK_TIME := 1.1
 @export var player_threshold := .4
 
-var tick_time: float = DEFAULT_TICK_TIME
+var px_threshold := 200 # spawn platform every 200px
+var scrolled_pxs: float = 0.0
+
 var scrolling_speed := DEFAULT_SCROLLING_SPEED
-var time_acc: float = 0
 var win_height: float = 0
 
 var lives := 3
+var DEATH_TIME := 1.5 # seconds
+var death_acc = 0
 
 func setup() -> void:
     win_height = get_viewport_rect().size.y
@@ -29,19 +31,31 @@ func handle_death() -> void:
     lives -= 1
     if lives < 0:
         print("Game over")
+        get_tree().paused = true
+        player.visible = false
+        return
+    player.move_to_center()
+    player.pause()
+    death_acc = DEATH_TIME
 
 func _physics_process(delta: float) -> void:
     _move_world(delta)
+    if player.paused:
+        player.move_to_center()
     
 func _move_world(delta: float) -> void:
     world.position.y += scrolling_speed * delta
 
 func _process(delta: float) -> void:
-    time_acc += delta
-    if time_acc >= tick_time:
-        time_acc -= tick_time
+    scrolled_pxs += DEFAULT_SCROLLING_SPEED * delta
+    if scrolled_pxs >= px_threshold:
+        scrolled_pxs -= px_threshold
         platform_manager.spawn_platform(-world.position.y)
         
+    if player.paused:
+        death_acc -= delta
+        if death_acc < 0:
+            player.unpause()
     _prune_old_platforms()
     
 func _prune_old_platforms() -> void:
@@ -53,12 +67,10 @@ func _prune_old_platforms() -> void:
         if plat.position.y > win_height:
             platform_container.remove_child(platform)
             
-#func _adjust_speed():
+#func _adjust_speed() -> void:
     #if player.position.y + world.position.y < win_height * player_threshold:
-        #scrolling_speed = 400
-        #tick_time = .5
+        #scrolling_speed = 300
     #else:
         #scrolling_speed = DEFAULT_SCROLLING_SPEED
-        #tick_time = DEFAULT_TICK_TIME
-        
-    
+        #
+    #
