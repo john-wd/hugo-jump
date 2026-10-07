@@ -5,6 +5,20 @@
 [ext_resource type="PackedScene" uid="uid://df8j4tlso6ixu" path="res://managers/platform_manager.tscn" id="2_xej52"]
 [ext_resource type="PackedScene" uid="uid://bu4bpfcdmdjwv" path="res://entities/Platform/platform.tscn" id="4_x628s"]
 
+[sub_resource type="Theme" id="Theme_mpk4j"]
+
+[sub_resource type="Theme" id="Theme_ermvq"]
+
+[sub_resource type="Theme" id="Theme_i2eqb"]
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_i2eqb"]
+
+[sub_resource type="Theme" id="Theme_fyd2q"]
+
+[sub_resource type="Theme" id="Theme_vheph"]
+
+[sub_resource type="Theme" id="Theme_jghdd"]
+
 [node name="MainGame" type="Node2D" unique_id=798394487]
 script = ExtResource("1_t4bxf")
 
@@ -21,3 +35,63 @@ position = Vector2(422, 903)
 
 [node name="Platform" parent="World/Platforms" unique_id=999820652 instance=ExtResource("4_x628s")]
 position = Vector2(194, 978)
+
+[node name="MarginContainer" type="MarginContainer" parent="." unique_id=1425501236]
+offset_right = 960.0
+offset_bottom = 1280.0
+theme = SubResource("Theme_mpk4j")
+theme_override_constants/margin_left = 64
+theme_override_constants/margin_top = 16
+theme_override_constants/margin_right = 64
+theme_override_constants/margin_bottom = 16
+
+[node name="HBoxContainer" type="HBoxContainer" parent="MarginContainer" unique_id=2026512369]
+layout_mode = 2
+size_flags_vertical = 0
+alignment = 1
+
+[node name="LivesLabel" type="Label" parent="MarginContainer/HBoxContainer" unique_id=1628381826]
+layout_mode = 2
+theme = SubResource("Theme_ermvq")
+theme_type_variation = &"HeaderLarge"
+text = "LIVES   -   "
+
+[node name="LivesNumberLabel" type="Label" parent="MarginContainer/HBoxContainer" unique_id=1557233240]
+unique_name_in_owner = true
+layout_mode = 2
+theme = SubResource("Theme_i2eqb")
+theme_type_variation = &"HeaderLarge"
+text = "0"
+
+[node name="HSeparator" type="HSeparator" parent="MarginContainer/HBoxContainer" unique_id=1651273388]
+layout_mode = 2
+size_flags_horizontal = 3
+theme_override_styles/separator = SubResource("StyleBoxEmpty_i2eqb")
+
+[node name="PointsLabel" type="Label" parent="MarginContainer/HBoxContainer" unique_id=1207067299]
+unique_name_in_owner = true
+layout_mode = 2
+theme = SubResource("Theme_fyd2q")
+theme_type_variation = &"HeaderLarge"
+text = "0000000000"
+
+[node name="GameOverContainer" type="VBoxContainer" parent="MarginContainer" unique_id=315975036]
+unique_name_in_owner = true
+layout_mode = 2
+alignment = 1
+
+[node name="GameOverLabel" type="Label" parent="MarginContainer/GameOverContainer" unique_id=172229348]
+layout_mode = 2
+theme = SubResource("Theme_vheph")
+theme_type_variation = &"HeaderLarge"
+theme_override_font_sizes/font_size = 128
+text = "GAME OVER"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="InstructionLabel" type="Label" parent="MarginContainer/GameOverContainer" unique_id=1863489824]
+layout_mode = 2
+theme = SubResource("Theme_jghdd")
+theme_type_variation = &"HeaderMedium"
+text = "Press R to restart"
+horizontal_alignment = 1
