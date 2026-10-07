@@ -21,7 +21,6 @@ var jumps := 0
 var paused := false
 
 func jump() -> void:
-    state = State.JUMPING
     if jumps < 2:
         velocity.y = JUMP_VELOCITY
         jumps += 1
@@ -34,6 +33,7 @@ func move_to_center() -> void:
     velocity = Vector2.ZERO
     
     global_position = viewport
+    state = State.IDLE
 
 func pause() -> void:
     paused = true
@@ -48,6 +48,7 @@ func _physics_process(delta: float) -> void:
         jumps = 0
         state = State.IDLE
     else:
+        state = State.JUMPING
         if jumps == 0:
             jumps = 1
     
@@ -58,7 +59,7 @@ func _physics_process(delta: float) -> void:
     var direction := Input.get_axis("move_left", "move_right")
     if direction:
         velocity.x = direction * SPEED
-        sprite.flip_h = direction < 0
+        sprite.flip_h = direction > 0
         if state != State.JUMPING:
             state = State.RUNNING
         unpause()
