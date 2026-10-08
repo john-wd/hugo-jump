@@ -19,13 +19,17 @@ signal died
 var gravity: float = ProjectSettings.get_setting("physics/2d/default_gravity")
 var jumps := 0
 var paused := false
+var has_double_jump := false
 
 func jump() -> void:
-    if jumps < 2:
+    if jumps < 1:
+        velocity.y = JUMP_VELOCITY
+        jumps += 1 
+    if has_double_jump and jumps < 2:
         velocity.y = JUMP_VELOCITY
         jumps += 1
         
-func move_to_center() -> void:
+func respawn() -> void:
     var viewport := get_viewport_rect().size
     viewport.x = viewport.x / 2.0
     viewport.y = viewport.y / 2.0
