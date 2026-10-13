@@ -63,7 +63,7 @@ func _physics_process(delta: float) -> void:
     var direction := Input.get_axis("move_left", "move_right")
     if direction:
         velocity.x = direction * SPEED
-        sprite.flip_h = direction > 0
+        sprite.flip_h = direction < 0
         if state != State.JUMPING:
             state = State.RUNNING
         unpause()

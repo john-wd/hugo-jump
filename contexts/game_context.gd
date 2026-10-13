@@ -13,7 +13,7 @@ class_name GameContext extends Node2D
 
 var DEFAULT_SCROLLING_SPEED := 200.0
 var FAST_SCROLLING_SPEED := 400.0
-var PLATFORM_SPACING := 200 # spawn platform every 200px
+var PLATFORM_SPACING := 250 # spawn platform every 200px
 
 var scrolling_speed := DEFAULT_SCROLLING_SPEED
 var screen_height: float = 0.0

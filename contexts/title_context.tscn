@@ -1,6 +1,9 @@
 [gd_scene format=3 uid="uid://c7qe4kn8mug1x"]
 
 [ext_resource type="Script" uid="uid://cchg7syap3rvm" path="res://contexts/title_context.gd" id="1_ch40n"]
+[ext_resource type="Texture2D" uid="uid://rus4cyejk8bo" path="res://assets/title/logo.png" id="2_ux8ft"]
+[ext_resource type="Theme" uid="uid://5rq8nhccl432" path="res://components/themes/main_theme.tres" id="3_6yk2q"]
+[ext_resource type="Texture2D" uid="uid://bk114hjwxw1ta" path="res://assets/title/Pixel Skyward Adventure.png" id="3_ux8ft"]
 
 [sub_resource type="FontVariation" id="FontVariation_m8nip"]
 
@@ -49,45 +52,69 @@ script = ExtResource("1_ch40n")
 [node name="margin_container" type="MarginContainer" parent="." unique_id=301034111]
 offset_right = 960.0
 offset_bottom = 1280.0
+size_flags_horizontal = 3
 size_flags_vertical = 3
 theme = SubResource("Theme_ermvq")
 theme_override_constants/margin_left = 32
 theme_override_constants/margin_top = 32
 theme_override_constants/margin_right = 32
-theme_override_constants/margin_bottom = 320
+theme_override_constants/margin_bottom = 32
+metadata/_edit_lock_ = true
 
 [node name="v_box_container" type="VBoxContainer" parent="margin_container" unique_id=1155953567]
 layout_mode = 2
 size_flags_horizontal = 4
-size_flags_vertical = 8
+size_flags_vertical = 0
 size_flags_stretch_ratio = 0.71
-theme_override_constants/separation = 32
+theme_override_constants/separation = 4
+alignment = 2
 
-[node name="Title" type="Label" parent="margin_container/v_box_container" unique_id=1646499434]
+[node name="TitleLogo" type="Sprite2D" parent="margin_container/v_box_container" unique_id=2146860660]
+position = Vector2(0, 200)
+scale = Vector2(0.5, 0.5)
+texture = ExtResource("2_ux8ft")
+
+[node name="HBoxContainer" type="HBoxContainer" parent="margin_container" unique_id=109516896]
 layout_mode = 2
-theme_override_font_sizes/font_size = 64
-text = "TITLE SCREEN"
+size_flags_vertical = 8
+alignment = 2
 
-[node name="margin_container" type="MarginContainer" parent="margin_container/v_box_container" unique_id=1681319505]
+[node name="MarginContainer" type="MarginContainer" parent="margin_container/HBoxContainer" unique_id=738289702]
 layout_mode = 2
-theme_override_constants/margin_left = 100
-theme_override_constants/margin_right = 100
+theme_override_constants/margin_left = 64
+theme_override_constants/margin_top = 64
+theme_override_constants/margin_right = 64
+theme_override_constants/margin_bottom = 64
 
-[node name="v_box_container2" type="VBoxContainer" parent="margin_container/v_box_container/margin_container" unique_id=1250725150]
+[node name="v_box_container2" type="VBoxContainer" parent="margin_container/HBoxContainer/MarginContainer" unique_id=1250725150]
+propagate_maximum_size = false
 layout_mode = 2
+size_flags_horizontal = 4
+size_flags_vertical = 4
+alignment = 1
 
-[node name="start_button" type="Button" parent="margin_container/v_box_container/margin_container/v_box_container2" unique_id=350417646]
+[node name="start_button" type="Button" parent="margin_container/HBoxContainer/MarginContainer/v_box_container2" unique_id=350417646]
 unique_name_in_owner = true
 layout_mode = 2
+theme = ExtResource("3_6yk2q")
 text = "Start game"
 
-[node name="settings_button" type="Button" parent="margin_container/v_box_container/margin_container/v_box_container2" unique_id=1742680031]
+[node name="settings_button" type="Button" parent="margin_container/HBoxContainer/MarginContainer/v_box_container2" unique_id=1742680031]
 unique_name_in_owner = true
 layout_mode = 2
+theme = ExtResource("3_6yk2q")
 text = "Settings
 "
 
-[node name="quit_button" type="Button" parent="margin_container/v_box_container/margin_container/v_box_container2" unique_id=1331043324]
+[node name="quit_button" type="Button" parent="margin_container/HBoxContainer/MarginContainer/v_box_container2" unique_id=1331043324]
 unique_name_in_owner = true
 layout_mode = 2
+theme = ExtResource("3_6yk2q")
 text = "Quit"
+
+[node name="Background" type="Sprite2D" parent="margin_container" unique_id=1368885555]
+z_index = -1
+position = Vector2(483, 638.6667)
+scale = Vector2(0.88766116, 0.88766116)
+texture = ExtResource("3_ux8ft")
+metadata/_edit_lock_ = true
