@@ -3,6 +3,8 @@ class_name RootContext extends Node2D
 @export var title_context: PackedScene
 @export var game_context: PackedScene
 
+@onready var audio_player: Node = $AudioPlayer
+
 var _current_context: Node
 
 func _ready() -> void:
@@ -23,7 +25,7 @@ func mount_title() -> void:
         return
 
     add_child(ctx)
-    ctx.setup()
+    ctx.setup(audio_player)
     ctx.quit_button_pressed.connect(func(): get_tree().quit())
     ctx.start_button_pressed.connect(mount_game)
 
@@ -39,4 +41,4 @@ func mount_game() -> void:
         return
 
     add_child(ctx)
-    ctx.setup()
+    ctx.setup(audio_player)

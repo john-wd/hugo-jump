@@ -1,5 +1,7 @@
 class_name Player extends CharacterBody2D
 
+signal jumped
+
 @export var SPEED := 800.0
 @export var JUMP_VELOCITY := -1400.0
 
@@ -24,10 +26,12 @@ var has_double_jump := false
 func jump() -> void:
     if jumps < 1:
         velocity.y = JUMP_VELOCITY
-        jumps += 1 
+        jumps += 1
+        jumped.emit() 
     if has_double_jump and jumps < 2:
         velocity.y = JUMP_VELOCITY
         jumps += 1
+        jumped.emit()
         
 func respawn() -> void:
     var viewport := get_viewport_rect().size

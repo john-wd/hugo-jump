@@ -3,8 +3,21 @@
 [ext_resource type="Script" uid="uid://bori5hbafritw" path="res://contexts/root_context.gd" id="1_3etme"]
 [ext_resource type="PackedScene" uid="uid://c7qe4kn8mug1x" path="res://contexts/title_context.tscn" id="3_4h17n"]
 [ext_resource type="PackedScene" uid="uid://rxx4jfd3c6ay" path="res://contexts/game_context.tscn" id="4_2mfb3"]
+[ext_resource type="PackedScene" uid="uid://cbvnvakmohf33" path="res://components/AudioPlayer.tscn" id="4_4xcjg"]
+[ext_resource type="AudioStream" uid="uid://bnucqnao8dxji" path="res://assets/audio/sfx/select.wav" id="5_jycpt"]
+[ext_resource type="AudioStream" uid="uid://iaynqts5c18" path="res://assets/audio/music/title-theme.mp3" id="5_pwl1u"]
+[ext_resource type="AudioStream" uid="uid://2dewupw1o0vg" path="res://assets/audio/sfx/play.wav" id="6_ve2al"]
+[ext_resource type="AudioStream" uid="uid://cjbbekt4k5gh7" path="res://assets/audio/sfx/die.wav" id="7_ve2al"]
+[ext_resource type="AudioStream" uid="uid://16kggut0kf0r" path="res://assets/audio/music/stage1.mp3" id="8_jycpt"]
 
 [node name="RootContext" type="Node2D" unique_id=2106507547]
 script = ExtResource("1_3etme")
 title_context = ExtResource("3_4h17n")
 game_context = ExtResource("4_2mfb3")
+
+[node name="AudioPlayer" parent="." unique_id=264463391 instance=ExtResource("4_4xcjg")]
+menuSfx = ExtResource("5_jycpt")
+startSfx = ExtResource("6_ve2al")
+dieSfx = ExtResource("7_ve2al")
+titleSong = ExtResource("5_pwl1u")
+gameSong = ExtResource("8_jycpt")

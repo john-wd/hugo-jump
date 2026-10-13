@@ -1,0 +1,16 @@
+[gd_scene format=3 uid="uid://cbvnvakmohf33"]
+
+[ext_resource type="Script" uid="uid://8n1m1sg525dg" path="res://components/audio_player.gd" id="1_0ot4v"]
+[ext_resource type="AudioStream" uid="uid://bqkc8jknr17d0" path="res://assets/audio/sfx/coin.wav" id="2_qcm1u"]
+[ext_resource type="AudioStream" uid="uid://dldt46v7d1ua0" path="res://assets/audio/sfx/jump.wav" id="3_w8oc1"]
+
+[node name="AudioPlayer" type="Node" unique_id=264463391]
+script = ExtResource("1_0ot4v")
+coinSfx = ExtResource("2_qcm1u")
+jumpSfx = ExtResource("3_w8oc1")
+
+[node name="MusicPlayer" type="AudioStreamPlayer" parent="." unique_id=96309147]
+bus = &"Music"
+
+[node name="SFXPlayer" type="AudioStreamPlayer" parent="." unique_id=1378809541]
+bus = &"SFX"

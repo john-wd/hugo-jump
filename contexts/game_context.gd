@@ -26,13 +26,22 @@ var death_acc := 0.0
 var playing := true
 var last_platform_height := 0.0
 
+var audio_player: AudioPlayer
+
 func _ready() -> void:
     screen_height = get_viewport_rect().size.y
 
 func _reset_last_platform_height() -> void:
     last_platform_height = screen_height - 2 * PLATFORM_SPACING # account for ground
 
-func setup() -> void:
+func setup(aplayer: AudioPlayer) -> void:
+    audio_player = aplayer
+
+    player.jumped.connect(handle_jump)
+    player.died.connect(handle_death)
+    configure()
+
+func configure() -> void:
     for platform in platform_container.get_children():
         platform.queue_free()
         
@@ -53,19 +62,24 @@ func setup() -> void:
         _spawn_next_platform()
         
     gameover_container.visible = false
-    player.died.connect(handle_death)
-    
-    
+    audio_player.play_game_music()
+
+func handle_jump() -> void:
+    if lives >= 0:
+        audio_player.play_jump()    
+
 func handle_death() -> void:
     lives -= 1
     if lives < 0:
         handle_gameover()
+        audio_player.pause_music()
         return
         
     lives_label.text = str(lives)
     player.respawn()
     player.pause()
     death_acc = DEATH_TIME
+    audio_player.play_die()
     
 func handle_gameover() -> void:
     print("Game over")
@@ -104,7 +118,7 @@ func _move_world(delta: float) -> void:
 func _process(delta: float) -> void:
     if not playing:
         if Input.is_action_pressed("restart"):
-            setup()
+            configure()
     
 func _prune_old_platforms() -> void:
     for platform in platform_container.get_children():
