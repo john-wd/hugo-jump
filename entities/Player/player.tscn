@@ -96,7 +96,7 @@ hframes = 16
 frame = 1
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=584971606]
-position = Vector2(0, 14)
+position = Vector2(0, 7)
 shape = SubResource("RectangleShape2D_mpk4j")
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="." unique_id=964461181]

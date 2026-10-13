@@ -7,6 +7,7 @@ class_name GameContext extends Node2D
 @onready var lives_label: Label = %LivesNumberLabel
 @onready var points_label: Label = %PointsLabel
 @onready var gameover_container: Container = %GameOverContainer
+@onready var parallax: Parallax2D = $Parallax2D
 
 @export var DEFAULT_LIVES := 3
 @export var player_threshold := .4
@@ -36,6 +37,7 @@ func setup() -> void:
         platform.queue_free()
         
     world.position.y = 0
+    parallax.screen_offset.y = 0
     _reset_last_platform_height()
     points = 0
     lives = DEFAULT_LIVES
@@ -97,6 +99,7 @@ func _move_world(delta: float) -> void:
     points_label.text = "%010d" % points
     
     world.position.y += dy
+    parallax.scroll_offset.y += dy * .01
 
 func _process(delta: float) -> void:
     if not playing:

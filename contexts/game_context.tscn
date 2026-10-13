@@ -101,9 +101,10 @@ horizontal_alignment = 1
 
 [node name="Background" type="Sprite2D" parent="." unique_id=1167308765]
 
-[node name="Gamebg" type="Sprite2D" parent="." unique_id=149977532]
+[node name="Parallax2D" type="Parallax2D" parent="." unique_id=1805936349]
+
+[node name="Gamebg" type="Sprite2D" parent="Parallax2D" unique_id=149977532]
 z_index = -1
-position = Vector2(480, 664.00006)
+position = Vector2(480.00003, 480)
 scale = Vector2(0.9855819, 0.98558193)
 texture = ExtResource("6_o45r6")
-metadata/_edit_lock_ = true
